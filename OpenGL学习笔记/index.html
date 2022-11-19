@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mahiroqwq.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="哈喽，在看这个博客的人你好，咱是一个OpenGL的初学者，博客可能不是写的很好，请见谅。 参考资料：LearnOpenGL  环境配置：用vcpkg下载相应包，并用cmake进行配置，vcpkg的下载请自行上github下载。 环境配好后速通一下cmakelists1234567891011121314cmake_minimum_required(VERSION 3.20)project(m_op">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL学习笔记">
+<meta property="og:url" content="https://mahiroqwq.github.io/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Jiu Mao&#39;s Home">
+<meta property="og:description" content="哈喽，在看这个博客的人你好，咱是一个OpenGL的初学者，博客可能不是写的很好，请见谅。 参考资料：LearnOpenGL  环境配置：用vcpkg下载相应包，并用cmake进行配置，vcpkg的下载请自行上github下载。 环境配好后速通一下cmakelists1234567891011121314cmake_minimum_required(VERSION 3.20)project(m_op">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-31T10:58:36.000Z">
+<meta property="article:modified_time" content="2022-11-19T01:28:53.024Z">
+<meta property="article:author" content="Jiu Mao">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://mahiroqwq.github.io/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>OpenGL学习笔记 | Jiu Mao's Home</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jiu Mao's Home</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Welcome to Jiu Mao's home.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://mahiroqwq.github.io/OpenGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jiu Mao">
+      <meta itemprop="description" content="meow meow moew ~~~~">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jiu Mao's Home">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenGL学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-10-31 18:58:36" itemprop="dateCreated datePublished" datetime="2022-10-31T18:58:36+08:00">2022-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-11-19 09:28:53" itemprop="dateModified" datetime="2022-11-19T09:28:53+08:00">2022-11-19</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>哈喽，在看这个博客的人你好，咱是一个OpenGL的初学者，博客可能不是写的很好，请见谅。</p>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/">LearnOpenGL</a></p>
+<ul>
+<li>环境配置：用vcpkg下载相应包，并用cmake进行配置，vcpkg的下载请自行上github下载。</li>
+<li>环境配好后速通一下cmakelists<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.20)</span><br><span class="line"></span><br><span class="line">project(m_opengl)</span><br><span class="line"></span><br><span class="line">add_executable(main main.cpp)</span><br><span class="line"></span><br><span class="line">find_package(assimp REQUIRED)</span><br><span class="line">target_link_libraries(main assimp::assimp)</span><br><span class="line"></span><br><span class="line">find_package(glad REQUIRED)</span><br><span class="line">target_link_libraries(main glad::glad)</span><br><span class="line"></span><br><span class="line">find_package(glfw3 REQUIRED)</span><br><span class="line">target_link_libraries(main glfw)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol>
+<li>回调函数</li>
+</ol>
+<p>首先教程一上就是个令人不明所以的回调函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void framebuffer_size_callback(GLFWwindow* window, int width, int height)</span><br><span class="line">&#123;</span><br><span class="line">    glViewport(0, 0, width, height);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>回调函数通过c++的函数指针实现,我们点进这个函数里面，会发现这样一个东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef void (* GLFWframebuffersizefun)(GLFWwindow* window, int width, int height);</span><br></pre></td></tr></table></figure>
+<p>这个void (* GLFWframebuffersizefun)呢就是咱的函数指针啦。</p>
+<p>cpp里面有std::function，但咱c语言里可就都是指针了呢。</p>
+<p>但是回调函数具体又是什么呢？<br>我的理解是当某个事件发生时，就会自动去调用这个函数。咱这个函数是当有鼠标拖动窗口边缘时就会自动地进行一次视口变换。（这不就是事件驱动式编程吗）</p>
+<p>2.VAO、VBO傻傻分不清</p>
+<p>VBO我的理解是用来存储数据的东西，VAO则是用来解释VBO中的东西并且和computing shader进行交互的东西。</p>
+<p><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/">具体可以参考这里</a></p>
+<ol>
+<li>我们自己的renderer类！</li>
+</ol>
+<p>learnopengl网站上是用的c语言面向过程的写法，不利于我们复用代码。怎么办呢？我的想法是写一个renderer类，当需要渲染数据时就把数据扔进去渲染，例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">renderer.render(our_data)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>开始写我们的renderer类！</li>
+</ul>
+<p>对于窗口的长和宽的定义我是写了一个宏</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#ifndef HEIGHT</span><br><span class="line">#define HEIGHT 600</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#ifndef WIDTH</span><br><span class="line">#define WIDTH 600</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>关于宏的妙用可以看看我的其他博客哦:)</p>
+<p>首先我们需要一个初始化的函数，其实就是把这一坨丑陋的东西写一下，这样就不用重复写了。不知道是什么意思，没事，我也不知道:&gt;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void init()</span><br><span class="line">    &#123;</span><br><span class="line">        glfwInit();</span><br><span class="line">        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);</span><br><span class="line">        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);</span><br><span class="line">        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">        window = glfwCreateWindow(WIDTH, HEIGHT, &quot;m_window&quot;, nullptr, nullptr);</span><br><span class="line">        glfwMakeContextCurrent(window);</span><br><span class="line">        glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);</span><br><span class="line"></span><br><span class="line">        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))</span><br><span class="line">        &#123;</span><br><span class="line">            std::cout &lt;&lt; &quot;Failed to initialize GLAD&quot; &lt;&lt; std::endl;</span><br><span class="line">            exit(0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/cpp%E4%B9%8B%E5%AE%8F%E7%9A%84%E5%A6%99%E7%94%A8/" rel="next" title="cpp之宏的妙用">
+      cpp之宏的妙用 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jiu Mao</p>
+  <div class="site-description" itemprop="description">meow meow moew ~~~~</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jiu Mao</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
